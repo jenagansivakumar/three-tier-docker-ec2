@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "strict": false,                  // Disable strict mode (optional for debugging)
+    "esModuleInterop": true,          // Enable interop with CommonJS modules
+    "skipLibCheck": true,             // Skip type checking of declaration files
+    "target": "ES6",                  // Compile to ES6 for broader compatibility
+    "module": "NodeNext",             // ESNext modules resolution for Node.js
+    "moduleResolution": "nodenext",   // Resolve modules in a NodeNext way (ES module support)
+    "outDir": "./dist",               // Output compiled files to dist folder
+    "rootDir": "./src"                // Input source files are in src folder
+  },
+  "include": ["src/**/*.ts", "src/db.js", "src/app.js"],          // Include all TypeScript files in src
+  "exclude": ["node_modules"]          // Exclude node_modules
+}

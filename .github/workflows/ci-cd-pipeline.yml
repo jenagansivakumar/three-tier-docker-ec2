@@ -1,0 +1,43 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step: Build frontend
+      - name: Build frontend
+        working-directory: ./frontend
+        run: |
+          npm install
+          npm run build
+
+      # Step: Build backend
+      - name: Build backend
+        working-directory: ./backend
+        run: |
+          npm install
+          npm run build
+
+      # Step: Build frontend Docker image
+      - name: Build frontend Docker image
+        run: |
+          docker build -t jenagan/frontend ./frontend
+
+      # Step: Build backend Docker image
+      - name: Build backend Docker image
+        run: |
+          docker build -t jenagan/backend ./backend
+
+      # Step: Log in to DockerHub
+      - name: Log in to DockerHub
+        uses: docker/log
